@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
   def show
     @user = User.find(params[:id])
   end
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-     @user = User.new(user_params)
+     @user = User.create(user_params)
 
      if @user.save
         redirect_to :action => 'index'
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
   def update
      @user = User.find(params[:id])
 
-     if @user.update_attributes(user_params)
+     if @user.update(user_params)
         redirect_to :action => 'show', :id => @user
      else
         render :action => 'edit'
@@ -37,12 +38,14 @@ class UsersController < ApplicationController
 
   end
 
-  def delete
+  def destroy
     User.find(params[:id]).destroy
     redirect_to :action => 'index'
   end
 
+  private
+
   def user_params
-     params.require(:users).permit(:name, :roll_no)
+     params.require(:user).permit(:name, :roll_no)
   end
 end
