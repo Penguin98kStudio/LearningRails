@@ -1,6 +1,12 @@
 <h3>Create a User</h3>
 <%= form_with model: @user do |form| %>
-  <%= form.text_field :name, placeholder: "name" %>
-  <%= form.text_field :roll_no, placeholder: "roll number" %>
+  <%= form.text_field :first_name, placeholder: "First Name" %>
+  <%= form.text_field :last_name, placeholder: "Last Name" %>
+  <%= form.text_field :roll_no, placeholder: "Roll Number" %>
+  <%= form.text_field :house_no, placeholder: "House No" %>
+  <%= form.text_field :block, placeholder: "Block" %>
+  <%= form.text_field :area, placeholder: "Area" %>
+  <%= form.text_field :city, placeholder: "City" %>
+  <%= form.text_field :country, placeholder: "Country" %>
   <%= form.submit %>
 <% end %>
